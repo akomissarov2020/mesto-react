@@ -34,9 +34,7 @@ function App() {
   };
 
   function handleCardClick(card) {
-    console.log(selectedCard);
     selectCard(card);
-    console.log(selectedCard);
   };
 
 
