@@ -1,13 +1,12 @@
-import defaultImagePath from '../images/default.png';
 import '../pages/index.css';
 
-function ImagePopup() {
+function ImagePopup(props) {
   return (
-    <div className="popup popup_type_view">
+    <div className={`popup popup_type_view ${props.card ? "popup_opened" : "popup_hidden" }`}>
       <div className="popup__container popup__container_image">
-        <button type="button" className="popup__close-button"></button>
-        <img src={defaultImagePath} alt="Нет картинки" className="popup__image" />
-        <h3 className="popup__image-text">Нет описания</h3>
+        <button type="button" className="popup__close-button" onClick={props.onClose}></button>
+        <img src={props.card.link} alt={props.card.name} className="popup__image" />
+        <h3 className="popup__image-text">{props.card.name}</h3>
       </div>
     </div>
   );

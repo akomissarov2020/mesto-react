@@ -4,7 +4,6 @@ import Main from './Main';
 import Footer from './Footer';
 import ImagePopup from './ImagePopup';
 import PopupWithForm from './PopupWithForm';
-import defaultImagePath from '../images/default.png';
 import '../pages/index.css';
 
 
@@ -13,10 +12,12 @@ function App() {
   const [isEditAvatarPopupOpen, openEditAvatarPopup] = React.useState(false);
   const [isEditProfilePopupOpen, openEditProfilePopup] = React.useState(false);
   const [isAddPlacePopupOpen, openAddPlacePopup] = React.useState(false);
+  const [selectedCard, selectCard] = React.useState(false);
   
   function handleEditAvatarClick() {
     openEditAvatarPopup(true);
   };
+
   function handleEditProfileClick() {
     openEditProfilePopup(true);
   };
@@ -29,13 +30,20 @@ function App() {
     openEditAvatarPopup(false);
     openEditProfilePopup(false);
     openAddPlacePopup(false);
+    selectCard(false);
+  };
+
+  function handleCardClick(card) {
+    console.log(selectedCard);
+    selectCard(card);
+    console.log(selectedCard);
   };
 
 
   const editProfileChildren = (<>
-      <input type="text" className="form__field" placeholder="Имя" name="edit-profile-name" required minlength="2" maxlength="40" />
+      <input type="text" className="form__field" placeholder="Имя" name="edit-profile-name" required minLength="2" maxLength="40" />
       <span className="form__error-message edit-profile-name-error"></span>
-      <input type="text" className="form__field" placeholder="О себе" name="edit-profile-title" required minlength="2" maxlength="200" />
+      <input type="text" className="form__field" placeholder="О себе" name="edit-profile-title" required minLength="2" maxLength="200" />
       <span className="form__error-message edit-profile-title-error"></span> 
       <button type="submit" className="form__save-button">Сохранить</button>
     </>);
@@ -47,7 +55,7 @@ function App() {
   </>);
 
   const addPlaceChildren = (<>
-      <input type="text" className="form__field" placeholder="Название" name="add-place-name" required minlength="2" maxlength="30" />
+      <input type="text" className="form__field" placeholder="Название" name="add-place-name" required minLength="2" maxLength="30" />
       <span className="form__error-message add-place-name-error"></span>
       <input type="url" className="form__field" placeholder="Ссылка на картинку" name="add-place-link" required />
       <span className="form__error-message add-place-link-error"></span>
@@ -61,27 +69,13 @@ function App() {
   return (
   <>
     <Header />
-    <Main  onEditProfile={handleEditProfileClick}  onEditAvatar={handleEditAvatarClick}  onAddPlace={handleAddPlaceClick} />
+    <Main  onEditProfile={handleEditProfileClick}  onEditAvatar={handleEditAvatarClick}  onAddPlace={handleAddPlaceClick} onCardClick={handleCardClick} />
     <Footer />
     <PopupWithForm name="edit-profile" title="Редактировать профайл" children={editProfileChildren} isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
     <PopupWithForm name="edit-avatar" title="Обновить аватар" children={editAvatarChildren} isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
     <PopupWithForm name="add-place" title="Новое место" children={addPlaceChildren} isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
     <PopupWithForm name="with-confirm" title="Вы уверены?" children={withConfirmChildren} isOpen={false} onClose={closeAllPopups} />
-    <ImagePopup />
-
-    <template id="place">
-      <li className="elements__element">
-        <img src={defaultImagePath} className="elements__image" alt="Нет какртинки" />
-        <div className="elements__title">
-          <h3 className="elements__text">Без текста</h3>
-          <div className="elements__like-container">
-            <button type="button" className="elements__like"></button>  
-            <p className="elements__like-count">0</p>
-          </div>
-        </div>
-        <button type="button" className="elements__trash-button"></button>
-      </li>
-    </template>
+    <ImagePopup card={selectedCard} onClose={closeAllPopups} />
   </>
   );
 }
