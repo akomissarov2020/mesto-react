@@ -1,6 +1,5 @@
 import React from 'react';
 import profileAvatarPath from '../images/avatar.png';
-import '../pages/index.css';
 import api from '../utils/api';
 import Card from './Card';
 
@@ -47,7 +46,7 @@ function Main(props) {
         <section>
           <ul className="elements page__elements">
             {cards.map((card, i) => (
-              <Card key={i} card={card} owner={ownerId} onCardClick={props.onCardClick} />
+              <Card key={card._id} card={card} owner={ownerId} onCardClick={props.onCardClick} />
             ))};
           </ul>
         </section>

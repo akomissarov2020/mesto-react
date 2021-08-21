@@ -1,5 +1,3 @@
-import '../pages/index.css';
-
 function Card(props) {
 
   const hasOwnLike = props.card.likes.some(like => like._id === props.owner);
