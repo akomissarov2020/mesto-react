@@ -6,6 +6,11 @@ function AddPlacePopup(props) {
     const nameRef = React.useRef(); 
     const linkRef = React.useRef(); 
 
+    React.useEffect(() => {
+        nameRef.current.value = "";
+        linkRef.current.value = "";
+    }, [props.isOpen]);
+    
     function handleSubmit(e) {
         e.preventDefault();
         props.onUpdateCards({name: nameRef.current.value,
@@ -29,6 +34,8 @@ function AddPlacePopup(props) {
                 isOpen={props.isOpen} 
                 onClose={props.onClose} 
                 onSubmit={handleSubmit}
+                isLoading={props.isLoading}
+                loadingText="Загружается..."
                 />
         </>
   );

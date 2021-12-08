@@ -2,13 +2,15 @@ import React from 'react';
 
 function PopupWithForm(props) {
 
-  React.useEffect(() => {
+  React.useEffect(() => {    
     const handleEsc = (evt) => {
       if (evt.key === "Escape") {
         props.onClose();
       }
     };
+    
     window.addEventListener('keydown', handleEsc);
+    
     return () => {
       window.removeEventListener('keydown', handleEsc);
       };
@@ -28,7 +30,9 @@ function PopupWithForm(props) {
         <form className="form" name={props.name} onSubmit={props.onSubmit}>
           <h2 className="form__title">{props.title}</h2>
           {props.children}
-          <button type="submit" className="form__save-button">{props.buttonText}</button>
+          <button type="submit" className="form__save-button">
+            {props.isLoading ? props.loadingText : props.buttonText}
+          </button>
         </form>
       </div>
     </div>
