@@ -29,27 +29,22 @@ function EditProfilePopup(props) {
         });
     } 
 
-    const editProfileChildren = (<>
-        <input type="text" className="form__field" placeholder="Имя" name="edit-profile-name" required minLength="2" maxLength="40" value={name} onChange={handleChangeName} />
-        <span className="form__error-message edit-profile-name-error"></span>
-        <input type="text" className="form__field" placeholder="О себе" name="edit-profile-title" required minLength="2" maxLength="200" value={description} onChange={handleChangeDesciption} />
-        <span className="form__error-message edit-profile-title-error"></span>     
-    </>);
-
     return (
-        <>
-            <PopupWithForm 
-                name="edit-profile"
-                title="Редактировать профайл"
-                children={editProfileChildren} 
-                buttonText="Сохранить" 
-                isOpen={props.isOpen} 
-                onClose={props.onClose}
-                onSubmit={handleSubmit}
-                isLoading={props.isLoading}
-                loadingText="Загружается..."
-            />
-        </>
+        <PopupWithForm 
+            name="edit-profile"
+            title="Редактировать профайл"
+            buttonText="Сохранить" 
+            isOpen={props.isOpen} 
+            onClose={props.onClose}
+            onSubmit={handleSubmit}
+            isLoading={props.isLoading}
+            loadingText="Загружается..."
+        >
+            <input type="text" className="form__field" placeholder="Имя" name="edit-profile-name" required minLength="2" maxLength="40" value={name} onChange={handleChangeName} />
+            <span className="form__error-message edit-profile-name-error"></span>
+            <input type="text" className="form__field" placeholder="О себе" name="edit-profile-title" required minLength="2" maxLength="200" value={description} onChange={handleChangeDesciption} />
+            <span className="form__error-message edit-profile-title-error"></span>     
+        </PopupWithForm>
   );
 }
 

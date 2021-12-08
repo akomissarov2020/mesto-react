@@ -17,27 +17,22 @@ function AddPlacePopup(props) {
             link: linkRef.current.value});
     } 
 
-    const addPlaceChildren = (<>
-        <input ref={nameRef} type="text" className="form__field" placeholder="Название" name="add-place-name" required minLength="2" maxLength="30" />
-        <span className="form__error-message add-place-name-error"></span>
-        <input ref={linkRef} type="url" className="form__field" placeholder="Ссылка на картинку" name="add-place-link" required />
-        <span className="form__error-message add-place-link-error"></span>
-    </>);
-
     return (
-        <>
-            <PopupWithForm 
-                name="add-place" 
-                title="Новое место" 
-                buttonText="Создать" 
-                children={addPlaceChildren} 
-                isOpen={props.isOpen} 
-                onClose={props.onClose} 
-                onSubmit={handleSubmit}
-                isLoading={props.isLoading}
-                loadingText="Загружается..."
-                />
-        </>
+        <PopupWithForm 
+            name="add-place" 
+            title="Новое место" 
+            buttonText="Создать" 
+            isOpen={props.isOpen} 
+            onClose={props.onClose} 
+            onSubmit={handleSubmit}
+            isLoading={props.isLoading}
+            loadingText="Загружается..."
+        >
+            <input ref={nameRef} type="text" className="form__field" placeholder="Название" name="add-place-name" required minLength="2" maxLength="30" />
+            <span className="form__error-message add-place-name-error"></span>
+            <input ref={linkRef} type="url" className="form__field" placeholder="Ссылка на картинку" name="add-place-link" required />
+            <span className="form__error-message add-place-link-error"></span>
+        </PopupWithForm>
   );
 }
 

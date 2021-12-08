@@ -123,43 +123,40 @@ function App() {
     });
   }
 
-  const withConfirmChildren = (<>
-  </>);
-
   return (
-  <CurrentUserContext.Provider value={currentUser}>
-    <Header />
-    <Main 
-      onEditProfile={handleEditProfileClick}  
-      onEditAvatar={handleEditAvatarClick} 
-      onAddPlace={handleAddPlaceClick} 
-      onCardClick={handleCardClick} 
-      cards={cards}
-      onCardLike={handleCardLike}
-      onCardDelete={handleCardDelete}
-    />
-    <Footer />
-    <EditProfilePopup 
-      isOpen={isEditProfilePopupOpen} 
-      onClose={closeAllPopups} 
-      onUpdateUser={handleUpdateUser}
-      isLoading={isLoadingSomething}
-    />
-    <EditAvatarPopup 
-      isOpen={isEditAvatarPopupOpen} 
-      onClose={closeAllPopups} 
-      onUpdateAvatar={handleUpdateAvatar}
-      isLoading={isLoadingSomething}
-    />
-    <AddPlacePopup 
-      isOpen={isAddPlacePopupOpen} 
-      onClose={closeAllPopups} 
-      onUpdateCards={handleAddPlaceSubmit}
-      isLoading={isLoadingSomething}
-    />
-    <PopupWithForm name="with-confirm" title="Вы уверены?" buttonText="Да" children={withConfirmChildren} isOpen={false} onClose={closeAllPopups} />
-    <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-  </CurrentUserContext.Provider>
+    <CurrentUserContext.Provider value={currentUser}>
+      <Header />
+      <Main 
+        onEditProfile={handleEditProfileClick}  
+        onEditAvatar={handleEditAvatarClick} 
+        onAddPlace={handleAddPlaceClick} 
+        onCardClick={handleCardClick} 
+        cards={cards}
+        onCardLike={handleCardLike}
+        onCardDelete={handleCardDelete}
+      />
+      <Footer />
+      <EditProfilePopup 
+        isOpen={isEditProfilePopupOpen} 
+        onClose={closeAllPopups} 
+        onUpdateUser={handleUpdateUser}
+        isLoading={isLoadingSomething}
+      />
+      <EditAvatarPopup 
+        isOpen={isEditAvatarPopupOpen} 
+        onClose={closeAllPopups} 
+        onUpdateAvatar={handleUpdateAvatar}
+        isLoading={isLoadingSomething}
+      />
+      <AddPlacePopup 
+        isOpen={isAddPlacePopupOpen} 
+        onClose={closeAllPopups} 
+        onUpdateCards={handleAddPlaceSubmit}
+        isLoading={isLoadingSomething}
+      />
+      <PopupWithForm name="with-confirm" title="Вы уверены?" buttonText="Да" isOpen={false} onClose={closeAllPopups} />
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+    </CurrentUserContext.Provider>
   );
 }
 
