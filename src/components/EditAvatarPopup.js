@@ -9,11 +9,7 @@ function EditAvatarPopup(props) {
 
     React.useEffect(() => {
         avatarRef.current.value = currentUser.avatar;
-    }, [props.isOpen]);
-
-    React.useEffect(() => {
-        avatarRef.current.value = currentUser.avatar;
-    }, [currentUser]); 
+    }, [props.isOpen, currentUser]);
 
     function handleSubmit(e) {
         e.preventDefault();

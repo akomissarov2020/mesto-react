@@ -26,7 +26,7 @@ function Main(props) {
         </section>
         <section>
           <ul className="elements page__elements">
-            {props.cards.map((card, i) => (
+            {props.cards.map((card) => (
               <Card key={card._id} 
                     card={card} 
                     onCardClick={props.onCardClick} 
