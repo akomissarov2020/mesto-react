@@ -67,6 +67,9 @@ function App() {
         setCurrentUser(data);
         closeAllPopups();
       })
+    .catch((err) => {
+      console.log(err);
+    })
     .finally(() => {
       setIsLoadingSomething(false)
     });
@@ -80,6 +83,9 @@ function App() {
         setCurrentUser(data);
         closeAllPopups();
       })
+    .catch((err) => {
+      console.log(err);
+    })
     .finally(() => {
       setIsLoadingSomething(false)
     });
@@ -93,6 +99,9 @@ function App() {
       (newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
       })
+    .catch((err) => {
+      console.log(err);
+    })
     .finally(() => {
       setIsLoadingSomething(false)
     });
@@ -105,6 +114,9 @@ function App() {
       () => {
         setCards((state) => state.filter((c) => c._id !== card._id));
       })
+    .catch((err) => {
+      console.log(err);
+    })
     .finally(() => {
       setIsLoadingSomething(false)
     });
@@ -118,6 +130,9 @@ function App() {
         setCards([newCard, ...cards]);
         closeAllPopups();
       })
+    .catch((err) => {
+      console.log(err);
+    })
     .finally(() => {
       setIsLoadingSomething(false)
     });
