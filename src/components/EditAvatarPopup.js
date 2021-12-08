@@ -5,23 +5,19 @@ import {CurrentUserContext} from '../contexts/CurrentUserContext';
 function EditAvatarPopup(props) {
 
     const currentUser = React.useContext(CurrentUserContext);
-    const [avatar, onUpdateAvatar] = React.useState('');
     const avatarRef = React.useRef(); 
 
-    function handleChangeAvatar(e) {
-        onUpdateAvatar(e.target.value);
-    }
+    React.useEffect(() => {
+        avatarRef.current.value = currentUser.avatar;
+    }, [props.isOpen]);
 
     React.useEffect(() => {
-        onUpdateAvatar(currentUser.avatar);
+        avatarRef.current.value = currentUser.avatar;
     }, [currentUser]); 
 
     function handleSubmit(e) {
         e.preventDefault();
-        onUpdateAvatar({
-          avatar: avatarRef.current.value,
-        });
-        props.onUpdateAvatar({avatar: avatar});
+        props.onUpdateAvatar({avatar: avatarRef.current.value});
     } 
 
     return (
@@ -35,7 +31,7 @@ function EditAvatarPopup(props) {
             isLoading={props.isLoading}
             loadingText="Загружается..."
         >
-            <input ref={avatarRef} type="url" className="form__field" placeholder="Ссылка на картинку" name="avatar-link" value={avatar} onChange={handleChangeAvatar} required />
+            <input ref={avatarRef} type="url" className="form__field" placeholder="Ссылка на картинку" name="avatar-link" required />
             <span className="form__error-message avatar-link-error"></span>
         </PopupWithForm>
   );
