@@ -22,8 +22,10 @@ function ImagePopup(props) {
     }
   };
 
+  const classesForPopup = `popup popup_type_view ${props.card.link.length ? "popup_opened" : "popup_hidden" }`
+
   return (
-    <div className={`popup popup_type_view ${props.card.link.length ? "popup_opened" : "popup_hidden" }`} onClick={handleClick}>
+    <div className={classesForPopup} onClick={handleClick}>
       <div className="popup__container popup__container_image">
         <button type="button" className="popup__close-button" onClick={props.onClose}></button>
         <img src={props.card.link} alt={props.card.name} className="popup__image" />
