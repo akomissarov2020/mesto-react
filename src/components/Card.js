@@ -30,7 +30,7 @@ function Card(props) {
                 <p className="elements__like-count">{props.card.likes.length}</p>
             </div>
         </div>
-        {isOwnCard ? (<button type="button" className="elements__trash-button" onClick={handleCardDelete}></button>) : (<></>)}
+        {isOwnCard && (<button type="button" className="elements__trash-button" onClick={handleCardDelete}></button>)}
     </li>
   );
 }
