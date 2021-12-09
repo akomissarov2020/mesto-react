@@ -122,8 +122,8 @@ function App() {
     .then(
       () => {
         setCards((state) => state.filter((c) => c._id !== card._id));
+        closeAllPopups();
       })
-      closeAllPopups();
     .catch((err) => {
       console.log(err);
     })
