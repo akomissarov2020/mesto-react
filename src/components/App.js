@@ -61,6 +61,7 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setIsConfirmPopupOpen(false);
     setSelectedCard({name: '', link: ''});
+    setCardIdToBeDeleted({});
   };
 
   function handleCardClick(card) {
@@ -122,13 +123,12 @@ function App() {
       () => {
         setCards((state) => state.filter((c) => c._id !== card._id));
       })
+      closeAllPopups();
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       setIsLoadingSomething(false);
-      setCardIdToBeDeleted({});
-      closeAllPopups();
     });
   }
 
